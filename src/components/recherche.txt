@@ -1,0 +1,46 @@
+const envoyerVersWhatsApp = (data) => {
+  const numero = "33612345678"; // Ton numéro (format international sans + ni 00)
+  
+  // On construit le message proprement
+  const message = `Bonjour ! Voici mes informations :
+- Nom : ${data.nom}
+- Date de visite : ${data.date}
+- Choix : ${data.choix}`;
+
+  // On encode le message pour qu'il soit lisible dans une URL
+  const messageEncode = encodeURIComponent(message);
+  
+  // On ouvre l'URL WhatsApp dans un nouvel onglet
+  window.open(`https://wa.me{numero}?text=${messageEncode}`, '_blank');
+};
+
+
+const [formData, setFormData] = useState({ nom: "", date: "", choix: "" });
+
+const handleSubmit = (e) => {
+  e.preventDefault(); // Empêche le rechargement de la page
+  
+  // Appel de notre fonction
+  envoyerVersWhatsApp(formData);
+};
+
+return (
+  <form onSubmit={handleSubmit} className="space-y-4">
+    <input 
+      type="text" 
+      placeholder="Votre nom"
+      className="w-full p-2 border rounded"
+      onChange={(e) => setFormData({...formData, nom: e.target.value})}
+    />
+    
+    <input 
+      type="date" 
+      className="w-full p-2 border rounded"
+      onChange={(e) => setFormData({...formData, date: e.target.value})}
+    />
+
+    <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">
+      Envoyer via WhatsApp ✅
+    </button>
+  </form>
+);

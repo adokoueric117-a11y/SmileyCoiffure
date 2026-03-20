@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  /* Définit 'light' comme thème par défaut et 'dark' pour le mode sombre du système */
+  themes: light --default, dark --prefersdark;
+}
+
