@@ -28,10 +28,18 @@ export default function Navbar() {
     <div className="h-20 border-b flex text-white">
         
         <nav className={`  ${isScrolled ? 'z-40 bg-base-100/90 h-20 w-full transition-all duration-200 fixed' : 'fixed z-50 bg-base-100 h-20 w-full transition-all duration-200' }`}>
-            <div className="text-2xl font-bold px-4 pt-5"><h1 className="">Smiley <span className="text-amber-600">Coiffure</span>
-            </h1>
+            <div className="text-2xl font-bold px-4 pt-5">
+                <motion.h1 className=""
+                initial={{opacity:0, x:-80}}
+                animate={{opacity:1, x:0}}
+                transition={{duration: 0.8}}
+                >Smiley <span className="text-amber-600">Coiffure</span>
+                </motion.h1>
             <motion.ul
             className="md:items-center md:justify-center gap-7 font-thin text-lg text-white/60 hidden md:flex cursor-pointer -mt-7"
+            initial={{opacity:0, y:10}}
+            animate={{opacity:1, y:0}}
+            transition={{duration: 0.8}}
                 >
                     {Menux.map((m)=>(
                         <li key={m.id} className="hover:scale-105 transition-all duration-300 hover:text-white">

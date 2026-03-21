@@ -15,13 +15,15 @@ export default function Hero() {
             <div className='bg-black opacity-40 inset-0 absolute '>
             </div>
             <motion.div className='flex flex-col items-center justify-center min-h-screen'
-            initial={{opacity:0, y:20}}
+            initial={{opacity:0, y:40}}
             animate={{opacity:1, y:0}}
-            transition={{duration:0.5}}
+            transition={{duration:0.8}}
             >
-                    <h1 className='text-6xl font-bold opacity-100 max-w-300 z-10'>Le Salon de coiffure le plus innovant de la capitale</h1>
+                    <h1 className='text-4xl font-bold opacity-100 max-w-300 z-10'>Le Salon de coiffure le plus innovant de la capitale</h1>
                     <Buttons/>
                 </motion.div>
+
+                
                 
         </div>
     </div>

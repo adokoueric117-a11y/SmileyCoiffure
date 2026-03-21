@@ -7,6 +7,8 @@ import cata5 from '../assets/cata5.png'
 import cata6 from '../assets/cata6.png'
 import cata7 from '../assets/cata7.png'
 import { useForm } from 'react-hook-form'
+import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 
 // Type pour TypeScript
 type FormData = {
@@ -18,6 +20,13 @@ type FormData = {
 }
 
 export default function Catalogue() {
+
+    const [ref, inview]=useInView({
+        triggerOnce: true,
+        threshold: 0.5
+    })
+
+    
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -54,9 +63,15 @@ Contact : ${data.tel}`
     return (
         <div>
             <div className='mt-8 mb-15 flex items-center justify-center'>
-                <h1 className='text-2xl'>Nos Modèles d'exception</h1>
+                <motion.h1 ref={ref} className='text-2xl'
+                initial={{opacity:0, y:25}}
+                animate={inview ? {opacity:1, y:0} : {}}
+                transition={{duration: 0.5}}
+                >Nos Modèles d'exception</motion.h1>
             </div>
-            <div className='flex items-center justify-center'>
+            <motion.div className='flex items-center justify-center'
+            
+            >
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
                     {catalog.map((cata) => (
@@ -101,7 +116,7 @@ Contact : ${data.tel}`
                                                 <option key={val.id} value={val.title}>{val.title}</option>
                                             ))}
                                         </select>
-                                        <input {...register("choixperso")} type="text" className='w-70 border border-gray-700 rounded-2xl text-center py-1 bg-transparent text-white' placeholder='Ou décrivez votre modèle' required />
+                                        <input {...register("choixperso")} type="text" className='w-70 border border-gray-700 rounded-2xl text-center py-1 bg-transparent text-white' placeholder='Ou décrivez votre modèle'/>
 
                                         
                                         <input {...register("tel")} type="tel" className='w-70 border border-gray-700 rounded-2xl text-center py-1 bg-transparent text-white' placeholder='Numéro de téléphone' required />
@@ -118,7 +133,8 @@ Contact : ${data.tel}`
                         </div>
                     )}
                 </div>
-            </div>
+            </motion.div>
+           
         </div>
     )
 }

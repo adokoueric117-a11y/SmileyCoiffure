@@ -24,7 +24,7 @@ export default function Services() {
         </button>
       </div>
       <h1 className="text-3xl font-bold mb-4">Services</h1>
-      <p className="text-lg text-gray-700 mt-4 mb-4">
+      <p className="text-lg text-white mt-4 mb-4">
         Découvrez nos prestations et tarifs. Cette page présente une vue d'ensemble des services de coiffure disponibles.
       </p>
       <div className='flex items-center justify-center'>
